@@ -1,6 +1,6 @@
 # VLC Radio Stations
 
-Various Radio Stations (and their various substations) as VLC Service Disovery addon (lua script):
+Various Radio Stations (and their various substations) as VLC Service Discovery addon (lua script):
 * SomaFM - https://somafm.com/
 * Rad(io) Cap(rice) - http://www.radcap.ru/
 * FIP (France Inter Paris) - https://www.radiofrance.fr/fip
