@@ -5,6 +5,15 @@ Various Radio Stations (and their various substations) as VLC Service Disovery a
 * Rad(io) Cap(rice) - http://www.radcap.ru/
 * FIP (France Inter Paris) - https://www.radiofrance.fr/fip
 
+Icon view:
+
+<img src="gfx/screen01.png">
+<img src="gfx/screen02.png">
+
+List view:
+
+<img src="gfx/screen03.png">
+
 ---
  This program is distributed in the hope that it will be useful,
  but WITHOUT ANY WARRANTY; without even the implied warranty of
