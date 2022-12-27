@@ -1,4 +1,4 @@
-# VLC Radio Stations
+# VLC Radio Stations Add-on
 
 Various Radio Stations (and their various substations) as VLC Service Discovery addon (lua script):
 * SomaFM - https://somafm.com/
