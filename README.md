@@ -1,4 +1,4 @@
-# VLC Radio Stations Add-on
+# VLC Radio Stations ++ Add-on
 
 Various Radio Stations (and their various substations) as VLC Service Discovery addon (lua script):
 * SomaFM - https://somafm.com/
@@ -34,13 +34,13 @@ Put the sd_xxx.lua file into the according Service Discovery subfolder of the VL
 * Linux (all users): /usr/share/vlc/lua/sd/
 * Linux (current user): ~/.local/share/vlc/lua/sd/
 
-Put the pl_xxx.lua file(s) into the according Playlist subfolder of the VLC lua directory—by default:
+Put the pl_xxx.lua file into the according Playlist subfolder of the VLC lua directory—by default:
 * Windows (all users): %ProgramFiles%\VideoLAN\VLC\lua\playlist\
 * Windows (current user): %APPDATA%\VLC\lua\playlist\
 * Linux (all users): /usr/share/vlc/lua/playlist/
 * Linux (current user): ~/.local/share/vlc/lua/playlist/
 
-You will need to place both the sd_xxx.lua as well as the pl_xxx.lua files for this addon to work.
+You will need to place both the sd_xxx.lua as well as the pl_xxx.lua file for this addon to work.
 
 Create the directories if they don't exist.
 
@@ -51,4 +51,4 @@ Restart VLC.
 
 * This Service Discovery is available on the left panel of VLC under "Internet" >> ""Radio Stations ++"
 * Each radio station offers several substations, various formats and sometimes several streaming servers.
-* If you are in thumbnail view, you will receive some nice and convenient station icons.
+* If you are in thumbnail view, you will receive some nice and convenient station icons. They will however only appear once you entered into the main station. Also, substation thumbnails for SomaFM are buggy and not displayed anymore—if anyone can resolve this bug, please contact me on Github.
