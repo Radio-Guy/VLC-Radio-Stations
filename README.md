@@ -36,13 +36,13 @@ Put the sd_xxx.lua file into the according Service Discovery subfolder of the VL
 * Linux (all users): /usr/share/vlc/lua/sd/
 * Linux (current user): ~/.local/share/vlc/lua/sd/
 
-Put the pl_xxx.lua file into the according Playlist subfolder of the VLC lua directory—by default:
+Put the pl_xxx.lua files into the according Playlist subfolder of the VLC lua directory—by default:
 * Windows (all users): %ProgramFiles%\VideoLAN\VLC\lua\playlist\
 * Windows (current user): %APPDATA%\VLC\lua\playlist\
 * Linux (all users): /usr/share/vlc/lua/playlist/
 * Linux (current user): ~/.local/share/vlc/lua/playlist/
 
-You will need to place both the sd_xxx.lua as well as the pl_xxx.lua file for this addon to work.
+You will need to place both the sd_xxx.lua as well as the pl_xxx.lua files for this addon to work.
 
 Create the directories if they don't exist.
 
