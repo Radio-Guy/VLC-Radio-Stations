@@ -1,9 +1,13 @@
 # VLC Radio Stations ++ Add-on
+<img src="gfx/radio_256_transp.png">
 
 Various Radio Stations (and their various substations) as VLC Service Discovery addon (lua script):
 * SomaFM - https://somafm.com/
 * Rad(io) Cap(rice) - http://www.radcap.ru/
 * FIP (France Inter Paris) - https://www.radiofrance.fr/fip
+
+---
+**SCREENSHOTS**:
 
 Icon view:
 
@@ -20,7 +24,6 @@ List view:
  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  GNU General Public License for more details.
 
----
 **BUGS & REQUESTS**:
 
 Send me a message or open a ticket on github: https://github.com/Radio-Guy
@@ -28,8 +31,7 @@ Send me a message or open a ticket on github: https://github.com/Radio-Guy
 ---
 **INSTALLATION**:
 
-Put the sd_xxx.lua file into the according Service Discovery subfolder of the VLC lua directory—by default:
-* Windows (all users): %ProgramFiles%\VideoLAN\VLC\lua\sd\
+Put the sd_xxx.lua file into the according Service Discovery subfolder of the VLC lua directory—by default:* Windows (all users): %ProgramFiles%\VideoLAN\VLC\lua\sd\
 * Windows (current user): %APPDATA%\VLC\lua\sd\
 * Linux (all users): /usr/share/vlc/lua/sd/
 * Linux (current user): ~/.local/share/vlc/lua/sd/
