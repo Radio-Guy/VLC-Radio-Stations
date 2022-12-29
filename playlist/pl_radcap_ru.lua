@@ -1,5 +1,5 @@
 --[[
- VLC Radio Stations ++ Add-on
+ VLC Radio Stations ++ Add-on (v0.61)
  Various Radio Stations (and their various substations) as VLC Service Discovery addon (lua script):
 
  SomaFM - https://somafm.com/
@@ -12,7 +12,7 @@
  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  GNU General Public License for more details.
 
-Send me a message or open a ticket on github: https://github.com/Radio-Guy
+Send me a message or open a ticket on github: https://github.com/Radio-Guy/VLC-Radio-Stations
 
 
 --- INSTALLATION ---:
@@ -40,9 +40,14 @@ Restart VLC.
 
 * This Service Discovery is available on the left panel of VLC under "Internet" >> ""Radio Stations ++"
 * Each radio station offers several substations, various formats and sometimes several streaming servers.
+* Activate the *Album* and *Description* columns in VLC—they will hold some valuable information, e.g. a popularity to sort on for SomaFM. 
 * If you are in thumbnail view, you will receive some nice and convenient station icons. They will however only appear once you entered into the main station. Also, substation thumbnails for SomaFM are buggy and not displayed anymore—if anyone can resolve this bug, please contact me on Github.
 
 --]]
+
+function proper_name(name)
+	return string.lower(name):gsub("<[^>]->", ""):gsub("/", " / "):gsub("[%c%s ]+", " "):gsub("&amp;", "&"):gsub("[^%l]%l", string.upper):gsub("^%l", string.upper)
+end
 
 function probe()
 	return (( vlc.access == "http" or vlc.access == "https" )
@@ -63,23 +68,30 @@ function parse()
 		for genre in html:gmatch '<a href="[^"]+" class="genres.-</span></a>' do
 			table.insert( tracks, {
 				path = site .. genre:match( 'href="(.-)"' ), 
-				title = string.lower(genre:match( '<a href[^>]->(.-)<span' )):gsub("<[^>]->", ""):gsub("/", " / "):gsub("[%c%s ]+", " "):gsub("&amp;", "&"):gsub("[^%l]%l", string.upper):gsub("^%l", string.upper),
+				title = proper_name(genre:match( '<a href[^>]->(.-)<span' )),
 				arturl = site .. genre:match( 'src="(.-)"' )
 			} )
 		end
 	else
 		if html:match( '"(http.-//[%d%.]+:%d+/[^"]+)"' ) then
 			local pic = site .. html:match( 'stylegraf/[%w%-%.]+' )
+			local name = "RAD(io) CAP(rice): " .. proper_name( html:match( '<h1 class="station station%-signal">(.-)</h1>' ) )
 			local i = 0
 			for server in html:gmatch '"(http.?//[%d%.]-:%d-/[^"]+)"' do
 				i = i + 1
 				if 1 == i then
 					table.insert( tracks, {
-						path = server, title = "AAC+ / 48 kbps / 22,050 Hz", arturl = pic
+						path = server,
+						title = "AAC+ / 48 kbps / 22,050 Hz",
+						album = name,
+						arturl = pic
 					} )
 				elseif 2 == i then
 					table.insert( tracks, {
-						path = server, title = "AAC-LC / 256 kbps / 44,100 Hz", arturl = pic
+						path = server,
+						title = "AAC-LC / 256 kbps / 44,100 Hz",
+						album = name,
+						arturl = pic
 					} )
 				end
 			end

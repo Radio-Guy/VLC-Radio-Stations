@@ -1,5 +1,5 @@
 --[[
- VLC Radio Stations ++ Add-on
+ VLC Radio Stations ++ Add-on (v0.61)
  Various Radio Stations (and their various substations) as VLC Service Discovery addon (lua script):
 
  SomaFM - https://somafm.com/
@@ -12,7 +12,7 @@
  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  GNU General Public License for more details.
 
-Send me a message or open a ticket on github: https://github.com/Radio-Guy
+Send me a message or open a ticket on github: https://github.com/Radio-Guy/VLC-Radio-Stations
 
 
 --- INSTALLATION ---:
@@ -40,6 +40,7 @@ Restart VLC.
 
 * This Service Discovery is available on the left panel of VLC under "Internet" >> ""Radio Stations ++"
 * Each radio station offers several substations, various formats and sometimes several streaming servers.
+* Activate the *Album* and *Description* columns in VLC—they will hold some valuable information, e.g. a popularity to sort on for SomaFM. 
 * If you are in thumbnail view, you will receive some nice and convenient station icons. They will however only appear once you entered into the main station. Also, substation thumbnails for SomaFM are buggy and not displayed anymore—if anyone can resolve this bug, please contact me on Github.
 
 --]]
@@ -65,7 +66,7 @@ function parse()
 			local stgg = "    " .. strg
 			local strlen = string.len(stgg)
 			table.insert( tracks, {
-					path = site .. li:match( 'class="playing"><a href="(/[^/]+)' ), 
+					path = site .. li:match( 'class="playing"><a href="(/[^/]+/)' ), 
 					title = li:match( '<h3>(.-)</h3>' ) .. " ... (" .. strg .. " gens)",
 					description = stgg:sub(strlen-4, strlen),
 					arturl = site .. li:match( '<img src="([^"]+)"' )
@@ -73,12 +74,13 @@ function parse()
 		end
 	else
 		local li = vlc.read(1000000):match( '<li.+</li>' )
-		
+
 		for codecs in li:gmatch '<nobr>[^<].-</a>.-br' do
 			for plss in codecs:gmatch '<a.-</a>' do
 				table.insert( tracks, {
 						path = site .. plss:match( 'href="([^"]+)"' ), 
 						title = codecs:match( '<nobr>([^:]+)' ) .. ": " .. plss:match( '([^>]+)</a>' ) .. " / " .. plss:match( 'href="[^%.]+.([^"]+)"' ),
+						album = "SomaFM: " .. li:match( '<h3>(.-)</h3>' ),
 						description = li:match( '<p class="descr">(.-)</p>' )
 --[[						arturl = site .. "/img/" .. vlc.path:match( 'somafm%.com/(%a+)' ) .. "120.jpg"--]]
 					} )

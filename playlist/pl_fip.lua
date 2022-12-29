@@ -1,5 +1,5 @@
 --[[
- VLC Radio Stations ++ Add-on
+ VLC Radio Stations ++ Add-on (v0.61)
  Various Radio Stations (and their various substations) as VLC Service Discovery addon (lua script):
 
  SomaFM - https://somafm.com/
@@ -12,7 +12,7 @@
  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  GNU General Public License for more details.
 
-Send me a message or open a ticket on github: https://github.com/Radio-Guy
+Send me a message or open a ticket on github: https://github.com/Radio-Guy/VLC-Radio-Stations
 
 
 --- INSTALLATION ---:
@@ -40,6 +40,7 @@ Restart VLC.
 
 * This Service Discovery is available on the left panel of VLC under "Internet" >> ""Radio Stations ++"
 * Each radio station offers several substations, various formats and sometimes several streaming servers.
+* Activate the *Album* and *Description* columns in VLC—they will hold some valuable information, e.g. a popularity to sort on for SomaFM. 
 * If you are in thumbnail view, you will receive some nice and convenient station icons. They will however only appear once you entered into the main station. Also, substation thumbnails for SomaFM are buggy and not displayed anymore—if anyone can resolve this bug, please contact me on Github.
 
 --]]
@@ -71,7 +72,7 @@ function parse()
 			table.insert( tracks, {
 					path = url:match( '{"url":"(.-)"' ), 
 					title = url:match( '"broadcastType":"(.-)"' ):gsub("^%l", string.upper) .. " / " .. url:match( '"format":"(.-)"' ) .. " / "  .. url:match( '"bitrate":(%d+)' ):gsub("^0", "192(?)") .. " kbps",
-					description = js:match( '"legend":"(.-)"' ),
+					album = js:match( '"legend":"(.-)"' ),
 					nowplaying = js:match( '"firstLine":"(.-)"' ) .. " - " .. js:match( '"secondLine":"(.-)"' )
 			} )
 		end
