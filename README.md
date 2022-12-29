@@ -54,4 +54,5 @@ Restart VLC.
 
 * This Service Discovery is available on the left panel of VLC under "Internet" >> ""Radio Stations ++"
 * Each radio station offers several substations, various formats and sometimes several streaming servers.
+* Activate the *Album* and *Description* columns in VLC—they will hold some valuable information, e.g. a popularity to sort on for SomaFM. 
 * If you are in thumbnail view, you will receive some nice and convenient station icons. They will however only appear once you entered into the main station. Also, substation thumbnails for SomaFM are buggy and not displayed anymore—if anyone can resolve this bug, please contact me on Github.
