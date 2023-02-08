@@ -1,15 +1,16 @@
 --[[
- VLC Radio Stations ++ Add-on (v0.61)
+ VLC Radio Stations ++ Add-on (v0.62)
  Various Radio Stations (and their various substations) as VLC Service Discovery addon (lua script):
 
  SomaFM - https://somafm.com/
+ FluxFM - https://www.fluxfm.de/
  Rad(io) Cap(rice) - http://www.radcap.ru/
  FIP (France Inter Paris) - https://www.radiofrance.fr/fip
 
 --- BUGS & REQUESTS: ---
  This program is distributed in the hope that it will be useful,
  but WITHOUT ANY WARRANTY; without even the implied warranty of
- MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
  GNU General Public License for more details.
 
 Send me a message or open a ticket on github: https://github.com/Radio-Guy/VLC-Radio-Stations
@@ -73,22 +74,22 @@ function parse()
 			} )
 		end
 	else
-		if html:match( '"(http.-//[%d%.]+:%d+/[^"]+)"' ) then
+		if html:match( '[%d]+%.[%d]+%.[%d]+%.[%d]+:%d-/[^"]+"' ) then
 			local pic = site .. html:match( 'stylegraf/[%w%-%.]+' )
 			local name = "RAD(io) CAP(rice): " .. proper_name( html:match( '<h1 class="station station%-signal">(.-)</h1>' ) )
 			local i = 0
-			for server in html:gmatch '"(http.?//[%d%.]-:%d-/[^"]+)"' do
+			for server in html:gmatch '([%d]+%.[%d]+%.[%d]+%.[%d]+:%d-/[^"]+)"' do
 				i = i + 1
 				if 1 == i then
 					table.insert( tracks, {
-						path = server,
+						path = "http://" .. server,
 						title = "AAC+ / 48 kbps / 22,050 Hz",
 						album = name,
 						arturl = pic
 					} )
 				elseif 2 == i then
 					table.insert( tracks, {
-						path = server,
+						path = "http://" .. server,
 						title = "AAC-LC / 256 kbps / 44,100 Hz",
 						album = name,
 						arturl = pic
