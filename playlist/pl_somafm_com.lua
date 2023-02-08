@@ -1,15 +1,16 @@
 --[[
- VLC Radio Stations ++ Add-on (v0.61)
+ VLC Radio Stations ++ Add-on (v0.62)
  Various Radio Stations (and their various substations) as VLC Service Discovery addon (lua script):
 
  SomaFM - https://somafm.com/
+ FluxFM - https://www.fluxfm.de/
  Rad(io) Cap(rice) - http://www.radcap.ru/
  FIP (France Inter Paris) - https://www.radiofrance.fr/fip
 
 --- BUGS & REQUESTS: ---
  This program is distributed in the hope that it will be useful,
  but WITHOUT ANY WARRANTY; without even the implied warranty of
- MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
  GNU General Public License for more details.
 
 Send me a message or open a ticket on github: https://github.com/Radio-Guy/VLC-Radio-Stations
@@ -73,7 +74,7 @@ function parse()
 				} )
 		end
 	else
-		local li = vlc.read(1000000):match( '<li.+</li>' )
+		local li = vlc.read(1000000):match( '<h3>.-</ul>' )
 
 		for codecs in li:gmatch '<nobr>[^<].-</a>.-br' do
 			for plss in codecs:gmatch '<a.-</a>' do
