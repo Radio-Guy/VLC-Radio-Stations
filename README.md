@@ -3,6 +3,8 @@
 
 Various Radio Stations (and their various substations) as VLC Service Discovery addon (lua script):
 * SomaFM - https://somafm.com/
+* FluxFM - https://www.fluxfm.de/
+* FluxFM (beyond) - https://streams.fluxfm.de/
 * Rad(io) Cap(rice) - http://www.radcap.ru/
 * FIP (France Inter Paris) - https://www.radiofrance.fr/fip
 
@@ -27,6 +29,13 @@ List view:
 **BUGS & REQUESTS**:
 
 Send me a message or open a ticket on github: https://github.com/Radio-Guy
+
+---
+**UPDATES**:
+
+20230217: v0.63 1) SD: Included FluxFM and FluxFM (beyond) (the latter includes even more radio streams than listed on the main website), 2) Minor beauty fixes
+
+20230208: v0.62 1) SomaFM: Removed web player item inclusions, 2) RedCap: Fixed streaming server retrieval bug
 
 ---
 **INSTALLATION**:
