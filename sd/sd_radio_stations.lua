@@ -1,15 +1,17 @@
 --[[
- VLC Radio Stations ++ Add-on (v0.61)
+ VLC Radio Stations ++ Add-on (v0.63)
  Various Radio Stations (and their various substations) as VLC Service Discovery addon (lua script):
 
  SomaFM - https://somafm.com/
+ FluxFM - https://www.fluxfm.de/
+ FluxFM (beyond) - https://streams.fluxfm.de/
  Rad(io) Cap(rice) - http://www.radcap.ru/
  FIP (France Inter Paris) - https://www.radiofrance.fr/fip
 
 --- BUGS & REQUESTS: ---
  This program is distributed in the hope that it will be useful,
  but WITHOUT ANY WARRANTY; without even the implied warranty of
- MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
  GNU General Public License for more details.
 
 Send me a message or open a ticket on github: https://github.com/Radio-Guy/VLC-Radio-Stations
@@ -48,13 +50,15 @@ Restart VLC.
 function descriptor()
 	return { title="Radio Stations ++",
 		description = "Radio Stations (Service Discovery)",
-		version = "0.61",
+		version = "0.63",
 		capabilities = {}
 	}
 end
 
 function main()
-	vlc.sd.add_item( {title = "SomaFM.com", path = "https://somafm.com/listen/listeners.html", arturl = "https://raw.githubusercontent.com/Radio-Guy/VLC-Radio-Stations/main/gfx/SomaFM_Logo.png"} )
+	vlc.sd.add_item( {title = "SomaFM", path = "https://somafm.com/listen/listeners.html", arturl = "https://raw.githubusercontent.com/Radio-Guy/VLC-Radio-Stations/main/gfx/SomaFM_Logo.png"} )
+	vlc.sd.add_item( {title = "FluxFM", path = "https://archiv.fluxfm.de/radio-livestream/", arturl = "https://raw.githubusercontent.com/Radio-Guy/VLC-Radio-Stations/main/gfx/fluxfm.jpg"} )
+	vlc.sd.add_item( {title = "FluxFM (beyond)", path = "https://streams.fluxfm.de/", arturl = "https://raw.githubusercontent.com/Radio-Guy/VLC-Radio-Stations/main/gfx/fluxfm_beyond.jpg"} )
 	vlc.sd.add_item( {title = "RAD(io) CAP(rice)", path = "http://radcap.ru/index-d.html", arturl = "https://raw.githubusercontent.com/Radio-Guy/VLC-Radio-Stations/main/gfx/radcap_Logo.png"} )
 	vlc.sd.add_item( {title = "FIP (France Inter Paris)", path = "https://www.radiofrance.fr/fip/titres-diffuses", arturl = "https://raw.githubusercontent.com/Radio-Guy/VLC-Radio-Stations/main/gfx/FIP_Logo.png"} )
 end
