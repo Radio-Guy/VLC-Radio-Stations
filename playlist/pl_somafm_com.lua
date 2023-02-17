@@ -1,9 +1,10 @@
 --[[
- VLC Radio Stations ++ Add-on (v0.62)
+ VLC Radio Stations ++ Add-on (v0.63)
  Various Radio Stations (and their various substations) as VLC Service Discovery addon (lua script):
 
  SomaFM - https://somafm.com/
  FluxFM - https://www.fluxfm.de/
+ FluxFM (beyond) - https://streams.fluxfm.de/
  Rad(io) Cap(rice) - http://www.radcap.ru/
  FIP (France Inter Paris) - https://www.radiofrance.fr/fip
 
@@ -80,7 +81,7 @@ function parse()
 			for plss in codecs:gmatch '<a.-</a>' do
 				table.insert( tracks, {
 						path = site .. plss:match( 'href="([^"]+)"' ), 
-						title = codecs:match( '<nobr>([^:]+)' ) .. ": " .. plss:match( '([^>]+)</a>' ) .. " / " .. plss:match( 'href="[^%.]+.([^"]+)"' ),
+						title = codecs:match( '<nobr>([^:]+)' ) .. ": " .. plss:match( '([^>]+)</a>' ) .. "bps / " .. plss:match( 'href="[^%.]+.([^"]+)"' ),
 						album = "SomaFM: " .. li:match( '<h3>(.-)</h3>' ),
 						description = li:match( '<p class="descr">(.-)</p>' )
 --[[						arturl = site .. "/img/" .. vlc.path:match( 'somafm%.com/(%a+)' ) .. "120.jpg"--]]
