@@ -33,6 +33,8 @@ Send me a message or open a ticket on github: https://github.com/Radio-Guy
 ---
 **UPDATES**:
 
+20230217: v0.64 ... Fixed minor parsing bug for FluxFM's John Reed station
+
 20230217: v0.63 1) SD: Included FluxFM and FluxFM (beyond) (the latter includes even more radio streams than listed on the main website), 2) Minor beauty fixes
 
 20230208: v0.62 1) SomaFM: Removed web player item inclusions, 2) RedCap: Fixed streaming server retrieval bug
