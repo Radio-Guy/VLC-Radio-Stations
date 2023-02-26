@@ -1,5 +1,5 @@
 --[[
- VLC Radio Stations ++ Add-on (v0.63)
+ VLC Radio Stations ++ Add-on (v0.64)
  Various Radio Stations (and their various substations) as VLC Service Discovery addon (lua script):
 
  SomaFM - https://somafm.com/
@@ -95,9 +95,10 @@ function parse()
 	elseif string.match(vlc.path, "streams%.fluxfm%.de/%?") then
 		local front = vlc.path:match( '^.-fluxfm%.de/' )
 		for link in vlc.path:gmatch '%?([^%?]+)' do
+			local tmp = string.upper( (link:match( '/(.-%d.-)/' ) or "??? "):gsub('[^%w%? ]+', ' ') )
 			table.insert( tracks, {
-					title = string.upper( link:match( '/(.-%d.-)/' ):gsub('[^%w]+', ' ') ) .. "kbps",
-					album = string.upper( link:match( '/(.-%d.-)/' ):gsub('[^%w]+', ' ') ) .. "kbps",
+					title = tmp .. "kbps",
+					album = tmp .. "kbps",
 					path = vlc.access .. "://" .. front .. link
 				} )
 		end
