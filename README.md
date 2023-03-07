@@ -42,6 +42,11 @@ Send me a message or open a ticket on github: https://github.com/Radio-Guy
 ---
 **INSTALLATION**:
 
+(for current linux user installation only, cd in to the project directory and run:
+```
+sh ./install_current_user_linux.sh
+```
+
 Put the sd_xxx.lua file into the according Service Discovery subfolder of the VLC lua directory—by default:
 * Windows (all users): %ProgramFiles%\VideoLAN\VLC\lua\sd\
 * Windows (current user): %APPDATA%\VLC\lua\sd\
