@@ -1,15 +1,17 @@
 --[[
- VLC Radio Stations ++ Add-on (v0.61)
+ VLC Radio Stations ++ Add-on (v0.65)
  Various Radio Stations (and their various substations) as VLC Service Discovery addon (lua script):
 
  SomaFM - https://somafm.com/
+ FluxFM - https://www.fluxfm.de/
+ FluxFM (beyond) - https://streams.fluxfm.de/
  Rad(io) Cap(rice) - http://www.radcap.ru/
  FIP (France Inter Paris) - https://www.radiofrance.fr/fip
 
 --- BUGS & REQUESTS: ---
  This program is distributed in the hope that it will be useful,
  but WITHOUT ANY WARRANTY; without even the implied warranty of
- MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
  GNU General Public License for more details.
 
 Send me a message or open a ticket on github: https://github.com/Radio-Guy/VLC-Radio-Stations
@@ -47,32 +49,31 @@ Restart VLC.
 
 function probe()
 	return (( vlc.access == "http" or vlc.access == "https" )
-	and string.match(vlc.path, "^www%.radiofrance%.fr/.+")
+	and string.match(vlc.path, "^www%.radiofrance%.fr/api/v2%.0/stations/fip/webradios.-") 
 	)
 end
 
 function parse()
 	local tracks = {}
-	local site = vlc.access .. "://" .. vlc.path:match( '^[^/]+')
 
-	if "www.radiofrance.fr/fip/titres-diffuses" == vlc.path then
-		local html = vlc.read(1000000):match( '<section class="WebradiosPage%-carousel%-container.-</section>' )
+	if "www.radiofrance.fr/api/v2.0/stations/fip/webradios" == vlc.path then
+		local html = vlc.read(100000)
 
-		for a in html:gmatch '<a href="/fip/.-</div>' do
+		for js in html:gmatch '{"now":{"firstLine":.-}}' do
 			table.insert( tracks, {
-					path = ("https://www.radiofrance.fr/api/v2.0/stations/fip/webradios/fip_" .. a:match( '<a href="/fip/(.-)"' ):gsub("radio%-", ""):gsub("%-", "")):gsub("_titresdiffuses", ""):gsub("monde", "world"), 
-					title = a:match( '>([^>]+)</div>' ),
-					arturl = "https://raw.githubusercontent.com/Radio-Guy/VLC-Radio-Stations/main/gfx/" .. a:match( '<a href="/fip/(.-)"' ) .. ".jpg"
+					path = vlc.access .. "://" .. vlc.path .. "/" .. js:match('"slug":"([^"]+)"'),
+					title = js:match('"legend":"([^"]+)"'):gsub(" logo", " (live)"):gsub(" Webradio", ""):gsub(" FR", ""),
+					arturl = "https://raw.githubusercontent.com/Radio-Guy/VLC-Radio-Stations/main/gfx/" .. js:match('"slug":"([^"]+)"') .. ".jpg"
 			} )
 		end
-	elseif string.match(vlc.path, "www.radiofrance.fr/api/v2.0/stations/fip/webradios/") then
-		local js = vlc.read(1000000)
+	elseif string.match(vlc.path, "www.radiofrance.fr/api/v2.0/stations/fip/webradios/fip") then
+		local js = vlc.read(10000)
 
 		for url in js:gmatch '{"url".-}' do
 			table.insert( tracks, {
 					path = url:match( '{"url":"(.-)"' ), 
-					title = url:match( '"broadcastType":"(.-)"' ):gsub("^%l", string.upper) .. " / " .. url:match( '"format":"(.-)"' ) .. " / "  .. url:match( '"bitrate":(%d+)' ):gsub("^0", "192(?)") .. " kbps",
-					album = js:match( '"legend":"(.-)"' ),
+					title = url:match( '"format":"(.-)"' ):upper() .. " / "  .. url:match( '"bitrate":(%d+)' ):gsub("^0", "192(?)") .. " kbps",
+					album = js:match('"legend":"([^"]+)"'):gsub(" logo", " (live)"):gsub(" Webradio", ""):gsub(" FR", ""),
 					nowplaying = js:match( '"firstLine":"(.-)"' ) .. " - " .. js:match( '"secondLine":"(.-)"' )
 			} )
 		end
