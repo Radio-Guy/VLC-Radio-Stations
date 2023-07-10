@@ -1,5 +1,5 @@
 --[[
- VLC Radio Stations ++ Add-on (v0.63)
+ VLC Radio Stations ++ Add-on (v0.65)
  Various Radio Stations (and their various substations) as VLC Service Discovery addon (lua script):
 
  SomaFM - https://somafm.com/
@@ -50,7 +50,7 @@ Restart VLC.
 function descriptor()
 	return { title="Radio Stations ++",
 		description = "Radio Stations (Service Discovery)",
-		version = "0.63",
+		version = "0.65",
 		capabilities = {}
 	}
 end
@@ -60,5 +60,6 @@ function main()
 	vlc.sd.add_item( {title = "FluxFM", path = "https://archiv.fluxfm.de/radio-livestream/", arturl = "https://raw.githubusercontent.com/Radio-Guy/VLC-Radio-Stations/main/gfx/fluxfm.jpg"} )
 	vlc.sd.add_item( {title = "FluxFM (beyond)", path = "https://streams.fluxfm.de/", arturl = "https://raw.githubusercontent.com/Radio-Guy/VLC-Radio-Stations/main/gfx/fluxfm_beyond.jpg"} )
 	vlc.sd.add_item( {title = "RAD(io) CAP(rice)", path = "http://radcap.ru/index-d.html", arturl = "https://raw.githubusercontent.com/Radio-Guy/VLC-Radio-Stations/main/gfx/radcap_Logo.png"} )
-	vlc.sd.add_item( {title = "FIP (France Inter Paris)", path = "https://www.radiofrance.fr/fip/titres-diffuses", arturl = "https://raw.githubusercontent.com/Radio-Guy/VLC-Radio-Stations/main/gfx/FIP_Logo.png"} )
+	vlc.sd.add_item( {title = "FIP (France Inter Paris)", path = "https://www.radiofrance.fr/api/v2.0/stations/fip/webradios", arturl = "https://raw.githubusercontent.com/Radio-Guy/VLC-Radio-Stations/main/gfx/FIP_Logo.png"} )
 end
+--#
