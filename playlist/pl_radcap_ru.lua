@@ -1,9 +1,10 @@
 --[[
- VLC Radio Stations ++ Add-on (v0.62)
+ VLC Radio Stations ++ Add-on (v0.66)
  Various Radio Stations (and their various substations) as VLC Service Discovery addon (lua script):
 
  SomaFM - https://somafm.com/
  FluxFM - https://www.fluxfm.de/
+ FluxFM (beyond) - https://streams.fluxfm.de/
  Rad(io) Cap(rice) - http://www.radcap.ru/
  FIP (France Inter Paris) - https://www.radiofrance.fr/fip
 
@@ -21,13 +22,13 @@ Send me a message or open a ticket on github: https://github.com/Radio-Guy/VLC-R
 Put the sd_xxx.lua file into the according Service Discovery subfolder of the VLC lua directory—by default:
 * Windows (all users): %ProgramFiles%\VideoLAN\VLC\lua\sd\
 * Windows (current user): %APPDATA%\VLC\lua\sd\
-* Linux (all users): /usr/share/vlc/lua/sd/
+* Linux (all users): /usr/lib/x86_64-linux-gnu/vlc/lua/sd/
 * Linux (current user): ~/.local/share/vlc/lua/sd/
 
 Put the pl_xxx.lua files into the according Playlist subfolder of the VLC lua directory—by default:
 * Windows (all users): %ProgramFiles%\VideoLAN\VLC\lua\playlist\
 * Windows (current user): %APPDATA%\VLC\lua\playlist\
-* Linux (all users): /usr/share/vlc/lua/playlist/
+* Linux (all users): /usr/lib/x86_64-linux-gnu/vlc/lua/playlist/
 * Linux (current user): ~/.local/share/vlc/lua/playlist/
 
 You will need to place both the sd_xxx.lua as well as the pl_xxx.lua files for this addon to work.
