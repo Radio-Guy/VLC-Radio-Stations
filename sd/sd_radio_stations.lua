@@ -1,5 +1,5 @@
 --[[
- VLC Radio Stations ++ Add-on (v0.65)
+ VLC Radio Stations ++ Add-on (v0.66)
  Various Radio Stations (and their various substations) as VLC Service Discovery addon (lua script):
 
  SomaFM - https://somafm.com/
@@ -22,13 +22,13 @@ Send me a message or open a ticket on github: https://github.com/Radio-Guy/VLC-R
 Put the sd_xxx.lua file into the according Service Discovery subfolder of the VLC lua directory—by default:
 * Windows (all users): %ProgramFiles%\VideoLAN\VLC\lua\sd\
 * Windows (current user): %APPDATA%\VLC\lua\sd\
-* Linux (all users): /usr/share/vlc/lua/sd/
+* Linux (all users): /usr/lib/x86_64-linux-gnu/vlc/lua/sd/
 * Linux (current user): ~/.local/share/vlc/lua/sd/
 
 Put the pl_xxx.lua files into the according Playlist subfolder of the VLC lua directory—by default:
 * Windows (all users): %ProgramFiles%\VideoLAN\VLC\lua\playlist\
 * Windows (current user): %APPDATA%\VLC\lua\playlist\
-* Linux (all users): /usr/share/vlc/lua/playlist/
+* Linux (all users): /usr/lib/x86_64-linux-gnu/vlc/lua/playlist/
 * Linux (current user): ~/.local/share/vlc/lua/playlist/
 
 You will need to place both the sd_xxx.lua as well as the pl_xxx.lua files for this addon to work.
@@ -50,7 +50,7 @@ Restart VLC.
 function descriptor()
 	return { title="Radio Stations ++",
 		description = "Radio Stations (Service Discovery)",
-		version = "0.65",
+		version = "0.66",
 		capabilities = {}
 	}
 end
@@ -60,6 +60,6 @@ function main()
 	vlc.sd.add_item( {title = "FluxFM", path = "https://archiv.fluxfm.de/radio-livestream/", arturl = "https://raw.githubusercontent.com/Radio-Guy/VLC-Radio-Stations/main/gfx/fluxfm.jpg"} )
 	vlc.sd.add_item( {title = "FluxFM (beyond)", path = "https://streams.fluxfm.de/", arturl = "https://raw.githubusercontent.com/Radio-Guy/VLC-Radio-Stations/main/gfx/fluxfm_beyond.jpg"} )
 	vlc.sd.add_item( {title = "RAD(io) CAP(rice)", path = "http://radcap.ru/index-d.html", arturl = "https://raw.githubusercontent.com/Radio-Guy/VLC-Radio-Stations/main/gfx/radcap_Logo.png"} )
-	vlc.sd.add_item( {title = "FIP (France Inter Paris)", path = "https://www.radiofrance.fr/api/v2.0/stations/fip/webradios", arturl = "https://raw.githubusercontent.com/Radio-Guy/VLC-Radio-Stations/main/gfx/FIP_Logo.png"} )
+	vlc.sd.add_item( {title = "FIP (France Inter Paris)", path = "https://www.radiofrance.fr/fip/api/live/webradios", arturl = "https://raw.githubusercontent.com/Radio-Guy/VLC-Radio-Stations/main/gfx/FIP_Logo.png"} )
 end
 --#
