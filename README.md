@@ -33,6 +33,8 @@ Send me a message or open a ticket on github: https://github.com/Radio-Guy
 ---
 **UPDATES**:
 
+20231119: v0.66 ... FIP api updated, and install description for "Linux (all users)" corrected
+
 20230710: v0.65 ... FIP website adjustment covered, and FIP logos renamed
 
 20230217: v0.64 ... Fixed minor parsing bug for FluxFM's John Reed station
@@ -47,13 +49,13 @@ Send me a message or open a ticket on github: https://github.com/Radio-Guy
 Put the "sd_radio_stations.lua" file into the according Service Discovery subfolder of the VLC lua directory—by default:
 * Windows (all users): %ProgramFiles%\VideoLAN\VLC\lua\sd\
 * Windows (current user): %APPDATA%\VLC\lua\sd\
-* Linux (all users): /usr/share/vlc/lua/sd/
+* Linux (all users): /usr/lib/x86_64-linux-gnu/vlc/lua/sd/
 * Linux (current user): ~/.local/share/vlc/lua/sd/
 
 Put the "pl_***.lua" files into the according Playlist subfolder of the VLC lua directory—by default:
 * Windows (all users): %ProgramFiles%\VideoLAN\VLC\lua\playlist\
 * Windows (current user): %APPDATA%\VLC\lua\playlist\
-* Linux (all users): /usr/share/vlc/lua/playlist/
+* Linux (all users): /usr/lib/x86_64-linux-gnu/vlc/lua/playlist/
 * Linux (current user): ~/.local/share/vlc/lua/playlist/
 
 You will need to place both the sd_xxx.lua as well as the pl_xxx.lua files for this addon to work.
